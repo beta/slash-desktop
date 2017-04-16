@@ -9,7 +9,7 @@ import path from 'path';
 import V8LazyParseWebpackPlugin from 'v8-lazy-parse-webpack-plugin';
 const ENV = process.env.NODE_ENV || 'development';
 
-const CSS_MAPS = ENV!=='production';
+const CSS_MAPS = ENV !== 'production';
 
 module.exports = {
     context: path.resolve(__dirname, "src"),
@@ -17,7 +17,7 @@ module.exports = {
 
     output: {
         path: path.resolve(__dirname, "build"),
-        publicPath: '/',
+        publicPath: './',
         filename: 'bundle.js'
     },
 
@@ -79,7 +79,7 @@ module.exports = {
             },
             {
                 test: /\.(svg|woff2?|ttf|eot|jpe?g|png|gif)(\?.*)?$/i,
-                loader: ENV==='production' ? 'file-loader' : 'url-loader'
+                loader: ENV === 'production' ? 'file-loader' : 'url-loader'
             }
         ]
     },
@@ -92,7 +92,7 @@ module.exports = {
         new webpack.NoErrorsPlugin(),
         new ExtractTextPlugin('style.css', {
             allChunks: true,
-            disable: ENV!=='production'
+            disable: ENV !== 'production'
         }),
         new webpack.DefinePlugin({
             'process.env.NODE_ENV': JSON.stringify(ENV)
@@ -103,9 +103,11 @@ module.exports = {
         }),
         new CopyWebpackPlugin([
             { from: './manifest.json', to: './' },
-            { from: './favicon.ico', to: './' }
+            { from: './favicon.ico', to: './' },
+            { from: './package.json', to: './' },
+            { from: './slash-desktop.js', to: './' }
         ])
-    ]).concat(ENV==='production' ? [
+    ]).concat(ENV === 'production' ? [
         new V8LazyParseWebpackPlugin(),
         new webpack.optimize.UglifyJsPlugin({
             output: {
@@ -160,7 +162,7 @@ module.exports = {
         setImmediate: false
     },
 
-    devtool: ENV==='production' ? 'source-map' : 'cheap-module-eval-source-map',
+    devtool: ENV === 'production' ? 'source-map' : 'cheap-module-eval-source-map',
 
     devServer: {
         port: process.env.PORT || 8080,

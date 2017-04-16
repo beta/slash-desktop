@@ -1,0 +1,32 @@
+{
+  "version": "0.1.0",
+  "command": "yarn",
+  "isShellCommand": true,
+  "showOutput": "always",
+  "suppressTaskName": true,
+  "tasks": [{
+    "taskName": "dev",
+    "args": ["run", "dev"]
+  }, {
+    "taskName": "start",
+    "args": ["run", "start"]
+  }, {
+    "taskName": "prestart",
+    "args": ["run", "prestart"]
+  }, {
+    "taskName": "build",
+    "args": ["run", "build"]
+  }, {
+    "taskName": "prebuild",
+    "args": ["run", "prebuild"]
+  }, {
+    "taskName": "test",
+    "args": ["run", "test"]
+  }, {
+    "taskName": "test:karma",
+    "args": ["run", "test:karma"]
+  }, {
+    "taskName": "lint",
+    "args": ["run", "lint"]
+  }]
+}

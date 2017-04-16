@@ -1,0 +1,6 @@
+{
+  "name": "slash-desktop",
+  "version": "0.1.0",
+  "description": "Desktop client for Slash.",
+  "main": "slash-desktop.js"
+}
