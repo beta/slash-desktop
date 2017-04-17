@@ -7,7 +7,7 @@
     "start": "cross-env NODE_ENV=production electron build",
     "prestart": "yarn run build",
     "build": "cross-env NODE_ENV=production webpack -p --progress",
-    "prebuild": "mkdirp build && ncp src/assets build/assets",
+    "prebuild": "mkdirp build",
     "test": "yarn run -s lint && yarn run -s test:karma",
     "test:karma": "karma start test/karma.conf.js --single-run",
     "lint": "eslint {src,test}"
@@ -73,6 +73,7 @@
     "webpack-dev-server": "^1.15.0"
   },
   "dependencies": {
+    "photon": "connors/photon",
     "preact": "^7.1.0",
     "preact-compat": "^3.0.0",
     "preact-router": "^2.0.0",

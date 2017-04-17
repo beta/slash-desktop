@@ -6,9 +6,11 @@ let win
 
 function createWindow () {
   win = new BrowserWindow({
+    title: 'Slash',
     width: 800,
     height: 600,
-    minWidth: 400
+    titleBarStyle: 'hidden-inset',
+    vibrancy: 'sidebar'
   })
   win.loadURL(url.format({
     pathname: path.join(__dirname, 'index.html'),
